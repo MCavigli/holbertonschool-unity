@@ -692,6 +692,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Black Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 4727770560822515459, guid: 17251f88967c54f71aa7c15f6981b543,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 58564a78431ee4761914d79b382c8a9d, type: 2}
     - target: {fileID: 4727770560822515485, guid: 17251f88967c54f71aa7c15f6981b543,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -705,7 +710,7 @@ PrefabInstance:
     - target: {fileID: 4727770560822515485, guid: 17251f88967c54f71aa7c15f6981b543,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 4727770560822515485, guid: 17251f88967c54f71aa7c15f6981b543,
         type: 3}
