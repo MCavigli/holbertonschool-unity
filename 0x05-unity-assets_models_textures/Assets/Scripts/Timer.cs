@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour
 		minutes = (int)intTime / 60;
 		seconds = (int)intTime % 60;
 		mSeconds = Time.deltaTime * 1000;
-		mSeconds %= 1000;
+		// mSeconds %= 1000;
 		TimerText.text = string.Format("{0:0}:{1:00}.{2:00}", minutes, seconds, mSeconds);
 	}
 }
