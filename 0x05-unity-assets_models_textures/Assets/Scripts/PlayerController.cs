@@ -9,11 +9,17 @@ public class PlayerController : MonoBehaviour
 	public float jump = 4.5f;
 	public float gravity = -9.81f * 2;
 	Vector3 velocity;
+	Transform pos;
 
+	void Start()
+	{
+		pos = GetComponent<Transform>();
+	}
 	void Update()
 	{
 		float x = Input.GetAxis("Horizontal");
 		float z = Input.GetAxis("Vertical");
+
 
 		if (cc.isGrounded && velocity.y < 0)
 		{
@@ -31,5 +37,9 @@ public class PlayerController : MonoBehaviour
 		velocity.y += gravity * Time.deltaTime;
 
 		cc.Move(velocity * Time.deltaTime);
+		if (pos.position.y < -30f)
+		{
+			pos.position = new Vector3(0, 50, 0);
+		}
 	}
 }
