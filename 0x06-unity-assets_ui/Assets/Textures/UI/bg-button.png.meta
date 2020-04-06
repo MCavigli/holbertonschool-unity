@@ -3,6 +3,8 @@ guid: df1b132490cfd4c7c82229801e44f692
 TextureImporter:
   fileIDToRecycleName:
     21300000: bg-button_0
+    21300002: bg-button_1
+    21300004: bg-button_2
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -100,6 +102,46 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 75223a4a48cc1472e9309eaa346ea1a8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-button_1
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 0
+        width: 201
+        height: 70
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e86bbda177e6b4c43ade2f7acfe62afc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg-button_2
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 200
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be69ce53d3c2e4ecabf449db6e94dd7a
       vertices: []
       indices: 
       edges: []
