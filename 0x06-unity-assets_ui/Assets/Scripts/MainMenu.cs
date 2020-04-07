@@ -7,38 +7,22 @@ using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
-	// void Start()
-	// {
-	// 	var aScene = SceneManager.GetActiveScene().buildIndex;
-	// }
-	void Update()
-	{
-		// if (Input.GetMouseButtonDown(0))
-		// {
-		// Debug.Log(aScene);
-		// Debug.Log(EventSystem.current.currentSelectedGameObject.name);
-		// }
-		if (EventSystem.current.currentSelectedGameObject.name == "Level01")
-			LevelSelect(0);
-		if (EventSystem.current.currentSelectedGameObject.name == "Level02")
-			LevelSelect(1);
-		if (EventSystem.current.currentSelectedGameObject.name == "Level03")
-			LevelSelect(2);
-		if (EventSystem.current.currentSelectedGameObject.name == "OptionsButton")
-			Options();
-		if (EventSystem.current.currentSelectedGameObject.name == "ExitButton")
-		{
-			Application.Quit();
-			Debug.Log("Exited");
-		}
-	}
 	public void LevelSelect(int level)
 	{
-		SceneManager.LoadScene(level);
+		if (level == 1)
+			SceneManager.LoadScene("Level01");
+		if (level == 2)
+			SceneManager.LoadScene("Level02");
+		if (level == 3)
+			SceneManager.LoadScene("Level03");
 	}
 	public void Options()
 	{
-
 		SceneManager.LoadScene(4);
+	}
+	public void Exit()
+	{
+		Application.Quit();
+		Debug.Log("Exited");
 	}
 }
