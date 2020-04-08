@@ -11,6 +11,8 @@ public class CameraController : MonoBehaviour
 	public Transform lookAt;
 	public Transform camTransform;
 
+	bool isInverted = true;
+
 	private Camera cam;
 	private float distanceZ = 5.0f;
 	private float distanceY = 2.0f;
@@ -30,8 +32,8 @@ public class CameraController : MonoBehaviour
 	{
 		currentX += Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
 		currentY += Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
 		currentY = Mathf.Clamp(currentY, -25f, 50f);
+
 	}
 	void LateUpdate()
 	{
