@@ -6,17 +6,12 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
 	public Text TimerText;
+	// public Text finalTimeText;
 	float intTime;
 	float mSeconds;
 	int seconds;
 	int minutes;
-	// Start is called before the first frame update
-	void Start()
-	{
 
-	}
-
-	// Update is called once per frame
 	void Update()
 	{
 		UpdateTimer();
@@ -31,4 +26,8 @@ public class Timer : MonoBehaviour
 		// mSeconds %= 1000;
 		TimerText.text = string.Format("{0:0}:{1:00}.{2:00}", minutes, seconds, mSeconds);
 	}
+	// public void Win()
+	// {
+	// 	finalTimeText.text = TimerText.text;
+	// }
 }
