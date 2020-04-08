@@ -18,7 +18,8 @@ public class MainMenu : MonoBehaviour
 	}
 	public void Options()
 	{
-		SceneManager.LoadScene(4);
+		PlayerPrefs.SetString("PrevScene", SceneManager.GetActiveScene().name);
+		SceneManager.LoadScene("Options");
 	}
 	public void Exit()
 	{

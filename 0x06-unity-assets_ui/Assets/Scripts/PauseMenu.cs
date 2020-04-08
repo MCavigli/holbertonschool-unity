@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -32,5 +33,21 @@ public class PauseMenu : MonoBehaviour
 		isPaused = false;
 		pM.gameObject.SetActive(false);
 		Cursor.lockState = CursorLockMode.Locked;
+	}
+
+	public void Restart()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
+
+	public void MainMenu()
+	{
+		SceneManager.LoadScene("MainMenu");
+	}
+
+	public void Options()
+	{
+		PlayerPrefs.SetString("PrevScene", SceneManager.GetActiveScene().name);
+		SceneManager.LoadScene("Options");
 	}
 }
