@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
 	public Transform lookAt;
 	public Transform camTransform;
 
-	bool isInverted = true;
+	bool isInverted = false;
 
 	private Camera cam;
 	private float distanceZ = 5.0f;
@@ -31,7 +31,7 @@ public class CameraController : MonoBehaviour
 	void Update()
 	{
 		currentX += Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-		currentY += Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+		currentY += Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime * (isInverted ? -1 : 1);
 		currentY = Mathf.Clamp(currentY, -25f, 50f);
 
 	}
