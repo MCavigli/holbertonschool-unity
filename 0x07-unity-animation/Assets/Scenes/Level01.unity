@@ -4521,6 +4521,7 @@ GameObject:
   - component: {fileID: 679809506}
   - component: {fileID: 679809505}
   - component: {fileID: 679809508}
+  - component: {fileID: 679809509}
   m_Layer: 0
   m_Name: CutsceneCamera
   m_TagString: Untagged
@@ -4588,8 +4589,8 @@ Transform:
   m_PrefabInstance: {fileID: 565305979113756448}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679809504}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1, y: 3.2, z: 41.3}
+  m_LocalRotation: {x: 0.078459114, y: 0, z: 0, w: 0.99691737}
+  m_LocalPosition: {x: 0, y: 2.5, z: -6.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4615,6 +4616,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &679809509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679809504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55feb20b5b1704d6ebb6c76f5537655c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mCam: {fileID: 534669902}
+  player: {fileID: 0}
+  timer: {fileID: 984590404}
+  csCont: {fileID: 679809504}
 --- !u!1001 &686868495
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13966,7 +13983,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3592699426690536670}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac1c40bead50a4314960b7b9af271f2f, type: 3}
   m_Name: 
@@ -14133,7 +14150,7 @@ PrefabInstance:
     - target: {fileID: 9134580869932626477, guid: 50e58017d9e1a42059bfc7bb937b9c6e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50e58017d9e1a42059bfc7bb937b9c6e, type: 3}
