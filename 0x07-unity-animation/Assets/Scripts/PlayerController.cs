@@ -23,8 +23,8 @@ public class PlayerController : MonoBehaviour
 
 		// This causes the character to face the correct direction
 		// but it breaks jumping
-		// if (moveHorizontal == 0 && moveVertical == 0)
-		// 	return;
+		if (moveHorizontal == 0 && moveVertical == 0)
+			return;
 
 		if (cc.isGrounded && velocity.y < 0)
 		{
@@ -35,17 +35,21 @@ public class PlayerController : MonoBehaviour
 			velocity.y = Mathf.Sqrt(jump * -2f * gravity);
 		}
 		Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
+
+		// Makes model face the direction they're moving
 		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
 
 		velocity.y += gravity * Time.deltaTime;
 		cc.Move(velocity * Time.deltaTime);
 
+		// if (movement != Vector3.zero)
+		// {
+		// 	transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement.normalized), 0.2f);
+		// }
 
-		if (movement != Vector3.zero)
-		{
-			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement.normalized), 0.2f);
-		}
+		// Allows model to move in world
 		transform.Translate(movement * speed * Time.deltaTime, Space.World);
+
 		if (pos.position.y < -30f)
 		{
 			pos.position = new Vector3(0, 50, 0);
