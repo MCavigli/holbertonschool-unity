@@ -10,21 +10,27 @@ public class PlayerController : MonoBehaviour
 	public float gravity = -9.81f * 2;
 	Vector3 velocity;
 	Transform pos;
+	Animator anim;
 
 	void Start()
 	{
 		pos = GetComponent<Transform>();
+		anim = GetComponent<Animator>();
 	}
 
 	void Update()
 	{
 		float moveHorizontal = Input.GetAxis("Horizontal");
 		float moveVertical = Input.GetAxis("Vertical");
+		if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+		{
+			anim.SetTrigger("runs");
+		}
 
 		// This causes the character to face the correct direction
 		// but it breaks jumping
-		if (moveHorizontal == 0 && moveVertical == 0)
-			return;
+		// if (moveHorizontal == 0 && moveVertical == 0)
+		// 	return;
 
 		if (cc.isGrounded && velocity.y < 0)
 		{
@@ -33,6 +39,7 @@ public class PlayerController : MonoBehaviour
 		if (Input.GetButtonDown("Jump") && cc.isGrounded)
 		{
 			velocity.y = Mathf.Sqrt(jump * -2f * gravity);
+			anim.SetTrigger("jumps");
 		}
 		Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
 
@@ -42,10 +49,11 @@ public class PlayerController : MonoBehaviour
 		velocity.y += gravity * Time.deltaTime;
 		cc.Move(velocity * Time.deltaTime);
 
-		// if (movement != Vector3.zero)
-		// {
-		// 	transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement.normalized), 0.2f);
-		// }
+		if (movement != Vector3.zero)
+		{
+			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement.normalized), 0.2f);
+			anim.SetTrigger("idle");
+		}
 
 		// Allows model to move in world
 		transform.Translate(movement * speed * Time.deltaTime, Space.World);
@@ -53,6 +61,7 @@ public class PlayerController : MonoBehaviour
 		if (pos.position.y < -30f)
 		{
 			pos.position = new Vector3(0, 50, 0);
+			anim.SetTrigger("falling");
 		}
 	}
 	// Original movement code
