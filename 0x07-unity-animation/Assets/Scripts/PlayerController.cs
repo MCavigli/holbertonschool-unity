@@ -31,16 +31,17 @@ public class PlayerController : MonoBehaviour
 
 		input *= speed;
 		input = transform.TransformDirection(input);
-		if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
-		{
-			anim.SetBool("runs", true);
-		}
-		// else
-		// {
-		// 	anim.SetBool("runs", false);
-		// }
 		if (cc.isGrounded)
 		{
+			if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+			{
+				anim.SetBool("runs", true);
+			}
+			else
+			{
+				anim.SetBool("runs", false);
+			}
+
 			moveDirection = input;
 			// if (moveDirection.y < 0)
 			// 	moveDirection.y = -2f;
