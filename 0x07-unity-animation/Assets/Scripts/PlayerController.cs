@@ -4,66 +4,138 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-	public CharacterController cc;
-	public float speed = 12f;
-	public float jump = 4.5f;
-	public float gravity = -9.81f * 2;
-	Vector3 velocity;
+	float speed = 12f;
+	float jump = 2f;
+	float gravity = -20f;
+	float airControl = 5f;
+	float turnSpeed = 200f;
+	Vector3 moveDirection = Vector3.zero;
+	CharacterController cc;
 	Transform pos;
 	Animator anim;
+	// Vector3 velocity;
 
 	void Start()
 	{
+		cc = GetComponent<CharacterController>();
 		pos = GetComponent<Transform>();
-		anim = GetComponent<Animator>();
+		anim = transform.GetChild(0).GetComponent<Animator>();
 	}
-
-	void Update()
+	void FixedUpdate()
 	{
-		float moveHorizontal = Input.GetAxis("Horizontal");
-		float moveVertical = Input.GetAxis("Vertical");
+		Vector3 input = new Vector3(
+			Input.GetAxis("Horizontal"),
+			0,
+			Input.GetAxis("Vertical")
+		);
+
+		input *= speed;
+		input = transform.TransformDirection(input);
 		if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
 		{
-			anim.SetTrigger("runs");
+			anim.SetBool("runs", true);
 		}
-
-		// This causes the character to face the correct direction
-		// but it breaks jumping
-		// if (moveHorizontal == 0 && moveVertical == 0)
-		// 	return;
-
-		if (cc.isGrounded && velocity.y < 0)
+		// else
+		// {
+		// 	anim.SetBool("runs", false);
+		// }
+		if (cc.isGrounded)
 		{
-			velocity.y = -2f;
+			moveDirection = input;
+			// if (moveDirection.y < 0)
+			// 	moveDirection.y = -2f;
+			if (Input.GetButton("Jump"))
+			{
+				moveDirection.y = Mathf.Sqrt(-2 * gravity * jump);
+				anim.SetTrigger("jumps");
+			}
+			else
+			{
+				moveDirection.y = 0;
+
+			}
 		}
-		if (Input.GetButtonDown("Jump") && cc.isGrounded)
+		else
 		{
-			velocity.y = Mathf.Sqrt(jump * -2f * gravity);
-			anim.SetTrigger("jumps");
+			input.y = moveDirection.y;
+			moveDirection = Vector3.Lerp(moveDirection, input, airControl * Time.deltaTime);
 		}
-		Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
-
-		// Makes model face the direction they're moving
-		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
-
-		velocity.y += gravity * Time.deltaTime;
-		cc.Move(velocity * Time.deltaTime);
-
-		if (movement != Vector3.zero)
-		{
-			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement.normalized), 0.2f);
-			anim.SetTrigger("idle");
-		}
-
-		// Allows model to move in world
-		transform.Translate(movement * speed * Time.deltaTime, Space.World);
+		float turn = Input.GetAxis("Horizontal");
+		transform.Rotate(0, turn * turnSpeed * Time.deltaTime, 0);
+		moveDirection.y += gravity * Time.deltaTime;
+		cc.Move(moveDirection * Time.deltaTime);
 
 		if (pos.position.y < -30f)
 		{
 			pos.position = new Vector3(0, 50, 0);
-			anim.SetTrigger("falling");
+			TimeToFall();
+		}
+
+		void TimeToFall()
+		{
+			anim.SetBool("falling", true);
+			if (pos.position.y < 6)
+			{
+				anim.SetBool("falling", false);
+			}
 		}
 	}
+
+
+
+
+	// Second attempt
+	// void Update()
+	// {
+	// 	float moveHorizontal = Input.GetAxis("Horizontal");
+	// 	float moveVertical = Input.GetAxis("Vertical");
+	// 	Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical);
+	// 	if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+	// 	{
+	// 		anim.SetTrigger("runs");
+	// 	}
+
+	// 	// This causes the character to face the correct direction
+	// 	// but it breaks jumping
+	// 	// if (moveHorizontal == 0 && moveVertical == 0)
+	// 	// 	return;
+
+	// 	if (cc.isGrounded && velocity.y < 0)
+	// 	{
+	// 		velocity.y = -2f;
+	// 	}
+	// 	if (Input.GetButtonDown("Jump") && cc.isGrounded)
+	// 	{
+	// 		velocity.y = Mathf.Sqrt(jump * -2f * gravity);
+	// 		anim.SetTrigger("jumps");
+	// 	}
+
+
+	// 	// Makes model face the direction they're moving
+	// 	transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
+
+	// 	velocity.y += gravity * Time.deltaTime;
+	// 	cc.Move(velocity * Time.deltaTime);
+
+	// 	if (movement != Vector3.zero)
+	// 	{
+	// 		transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement.normalized), 0.2f);
+	// 		anim.SetTrigger("idle");
+	// 	}
+
+	// 	// Allows model to move in world
+	// 	transform.Translate(movement * speed * Time.deltaTime, Space.World);
+
+	// 	if (pos.position.y < -30f)
+	// 	{
+	// 		pos.position = new Vector3(0, 50, 0);
+	// 		anim.SetTrigger("falling");
+	// 	}
+	// }
+
+
+
+
 	// Original movement code
 	// void Update()
 	// {

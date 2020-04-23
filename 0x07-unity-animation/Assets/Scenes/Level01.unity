@@ -1740,7 +1740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe827311cdc14104bd9a70e844bf18e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3592699426690536670}
+  player: {fileID: 862767908}
 --- !u!1001 &314352208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3361,9 +3361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c769b53a49a9c4241906fd5b62773d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 150
   lookAt: {fileID: 862767917}
-  camTransform: {fileID: 0}
   isInverted: 0
 --- !u!1 &546652572 stripped
 GameObject:
@@ -4594,8 +4592,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 9, y: 3.84, z: 0}
 --- !u!95 &679809508
 Animator:
   serializedVersion: 3
@@ -4832,6 +4830,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: fc6130fe6f48b4a9d9a46da82938f50a, type: 2}
+    - target: {fileID: 9500000, guid: bbfdf585361b84d818e46e0ceca7a4ae, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: bbfdf585361b84d818e46e0ceca7a4ae, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbfdf585361b84d818e46e0ceca7a4ae, type: 3}
 --- !u!1 &708203717
@@ -4940,7 +4946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07598a4f0365483595592b42fded603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 3592699426690536670}
+  player: {fileID: 862767908}
   winCanvas: {fileID: 1005523923}
   timerCanvas: {fileID: 984590404}
   timerText: {fileID: 1261587856}
@@ -6201,12 +6207,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: fc6130fe6f48b4a9d9a46da82938f50a, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 95122479792272174, guid: 4f3f38123232743e5ac5c7ef5c3bd970,
         type: 3}
       propertyPath: m_Avatar
       value: 
-      objectReference: {fileID: 9000000, guid: bbfdf585361b84d818e46e0ceca7a4ae, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 95122479792272174, guid: 4f3f38123232743e5ac5c7ef5c3bd970,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3592699425992684820, guid: 4f3f38123232743e5ac5c7ef5c3bd970,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6245,7 +6256,7 @@ PrefabInstance:
     - target: {fileID: 3592699425992684820, guid: 4f3f38123232743e5ac5c7ef5c3bd970,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3592699425992684820, guid: 4f3f38123232743e5ac5c7ef5c3bd970,
         type: 3}
@@ -6277,6 +6288,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3592699426690536673, guid: 4f3f38123232743e5ac5c7ef5c3bd970,
+        type: 3}
+      propertyPath: TimerText
+      value: 
+      objectReference: {fileID: 1261587856}
     - target: {fileID: 3592699426690536674, guid: 4f3f38123232743e5ac5c7ef5c3bd970,
         type: 3}
       propertyPath: pM
@@ -13878,7 +13894,7 @@ PrefabInstance:
     - target: {fileID: 565305978451379907, guid: 5a5f349e8b44546299febc6254366dc0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.033504054
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 565305978451379907, guid: 5a5f349e8b44546299febc6254366dc0,
         type: 3}
@@ -13893,7 +13909,7 @@ PrefabInstance:
     - target: {fileID: 565305978451379907, guid: 5a5f349e8b44546299febc6254366dc0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 565305978451379907, guid: 5a5f349e8b44546299febc6254366dc0,
         type: 3}
