@@ -71,12 +71,12 @@ public class PlayerController : MonoBehaviour
 		transform.Rotate(0, turn * turnSpeed * Time.deltaTime, 0);
 		moveDirection.y += gravity * Time.deltaTime;
 		cc.Move(moveDirection * Time.deltaTime);
-		if (pos.position.y < -15f)
-			anim.SetBool("falling", true);
+		if (pos.position.y < -10f)
+			anim.SetTrigger("falling");
 
-		if (pos.position.y < -90f)
+		if (pos.position.y < -95f)
 		{
-			pos.position = new Vector3(startPos.x, 50, startPos.z);
+			pos.position = new Vector3(startPos.x, 30, startPos.z);
 		}
 
 	}
