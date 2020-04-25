@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 	Vector3 moveDirection = Vector3.zero;
 	CharacterController cc;
 	Transform pos;
+	Vector3 startPos;
 	Animator anim;
 	// Vector3 velocity;
 
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
 		cc = GetComponent<CharacterController>();
 		pos = GetComponent<Transform>();
 		anim = transform.GetChild(0).GetComponent<Animator>();
+		startPos = transform.position;
 	}
 	void FixedUpdate()
 	{
@@ -36,6 +38,11 @@ public class PlayerController : MonoBehaviour
 			if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
 			{
 				anim.SetBool("runs", true);
+				if (Input.GetButton("Jump"))
+				{
+					anim.SetBool("runs", false);
+					anim.SetTrigger("jumps");
+				}
 			}
 			else
 			{
@@ -53,7 +60,6 @@ public class PlayerController : MonoBehaviour
 			else
 			{
 				moveDirection.y = 0;
-
 			}
 		}
 		else
@@ -65,21 +71,14 @@ public class PlayerController : MonoBehaviour
 		transform.Rotate(0, turn * turnSpeed * Time.deltaTime, 0);
 		moveDirection.y += gravity * Time.deltaTime;
 		cc.Move(moveDirection * Time.deltaTime);
-
-		if (pos.position.y < -30f)
-		{
-			pos.position = new Vector3(0, 50, 0);
-			TimeToFall();
-		}
-
-		void TimeToFall()
-		{
+		if (pos.position.y < -15f)
 			anim.SetBool("falling", true);
-			if (pos.position.y < 6)
-			{
-				anim.SetBool("falling", false);
-			}
+
+		if (pos.position.y < -90f)
+		{
+			pos.position = new Vector3(startPos.x, 50, startPos.z);
 		}
+
 	}
 
 
