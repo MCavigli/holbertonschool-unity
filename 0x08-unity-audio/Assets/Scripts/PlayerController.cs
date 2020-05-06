@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 	float airControl = 5f;
 	float turnSpeed = 200f;
 	Vector3 moveDirection = Vector3.zero;
+	GameObject player;
 	CharacterController cc;
 	Transform pos;
 	Vector3 startPos;
@@ -78,11 +79,15 @@ public class PlayerController : MonoBehaviour
 		moveDirection.y += gravity * Time.deltaTime;
 		cc.Move(moveDirection * Time.deltaTime);
 		if (pos.position.y < -20f)
+		{
 			anim.SetTrigger("falling");
+			audioSource.enabled = false;
+		}
+
 
 		if (pos.position.y < -95f)
 		{
-			pos.position = new Vector3(startPos.x, 30, startPos.z);
+			pos.position = new Vector3(startPos.x, 50, startPos.z);
 		}
 
 	}

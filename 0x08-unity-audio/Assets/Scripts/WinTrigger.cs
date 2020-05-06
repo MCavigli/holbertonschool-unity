@@ -8,6 +8,9 @@ public class WinTrigger : MonoBehaviour
 	public GameObject timerCanvas;
 	public Text timerText;
 	public Text finalTimeText;
+	public AudioSource bgm;
+	public AudioSource winSting;
+
 
 	void OnTriggerEnter(Collider other)
 	{
@@ -21,6 +24,8 @@ public class WinTrigger : MonoBehaviour
 	}
 	public void Win()
 	{
+		bgm.enabled = false;
+		winSting.enabled = true;
 		winCanvas.SetActive(true);
 		finalTimeText.text = timerText.text;
 		timerCanvas.SetActive(false);
