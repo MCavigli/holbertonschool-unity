@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
 	Transform pos;
 	Vector3 startPos;
 	Animator anim;
+	AudioSource audioSource;
 	// Vector3 velocity;
 
 	void Start()
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour
 		pos = GetComponent<Transform>();
 		anim = transform.GetChild(0).GetComponent<Animator>();
 		startPos = transform.position;
+		audioSource = GetComponent<AudioSource>();
 	}
 	void FixedUpdate()
 	{
@@ -38,15 +41,18 @@ public class PlayerController : MonoBehaviour
 			if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
 			{
 				anim.SetBool("runs", true);
+				audioSource.enabled = true;
 				if (Input.GetButton("Jump"))
 				{
 					anim.SetBool("runs", false);
 					anim.SetTrigger("jumps");
+					audioSource.enabled = false;
 				}
 			}
 			else
 			{
 				anim.SetBool("runs", false);
+				audioSource.enabled = false;
 			}
 
 			moveDirection = input;
@@ -71,7 +77,7 @@ public class PlayerController : MonoBehaviour
 		transform.Rotate(0, turn * turnSpeed * Time.deltaTime, 0);
 		moveDirection.y += gravity * Time.deltaTime;
 		cc.Move(moveDirection * Time.deltaTime);
-		if (pos.position.y < -10f)
+		if (pos.position.y < -20f)
 			anim.SetTrigger("falling");
 
 		if (pos.position.y < -95f)
