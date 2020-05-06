@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class PauseMenu : MonoBehaviour
 {
 	public GameObject pM;
+	public AudioMixerSnapshot paused;
+	public AudioMixerSnapshot unpaused;
 	bool isPaused = false;
 
 	void Update()
@@ -26,6 +29,7 @@ public class PauseMenu : MonoBehaviour
 		isPaused = true;
 		pM.gameObject.SetActive(true);
 		Cursor.lockState = CursorLockMode.Confined;
+		paused.TransitionTo(.01f);
 	}
 	public void Resume()
 	{
@@ -33,6 +37,7 @@ public class PauseMenu : MonoBehaviour
 		isPaused = false;
 		pM.gameObject.SetActive(false);
 		Cursor.lockState = CursorLockMode.Locked;
+		unpaused.TransitionTo(.01f);
 	}
 
 	public void Restart()

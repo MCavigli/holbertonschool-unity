@@ -3361,9 +3361,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c769b53a49a9c4241906fd5b62773d67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 150
   lookAt: {fileID: 3592699426690536676}
-  camTransform: {fileID: 0}
+  isInverted: 0
 --- !u!1 &546652572 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 0954bd92817da104caa16539d7ab19ad,
@@ -4743,7 +4742,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 3592699426690536670}
+  winCanvas: {fileID: 0}
+  timerCanvas: {fileID: 0}
   timerText: {fileID: 1261587856}
+  finalTimeText: {fileID: 0}
+  bgm: {fileID: 0}
+  winSting: {fileID: 0}
 --- !u!1 &712629414
 GameObject:
   m_ObjectHideFlags: 0
@@ -12808,6 +12812,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 345285973883331450, guid: d14009cda4df348b19c42f02905da8c5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 345285973883331454, guid: d14009cda4df348b19c42f02905da8c5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13697,10 +13706,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1c40bead50a4314960b7b9af271f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cc: {fileID: 3592699426690536671}
-  speed: 12
-  jump: 3.5
-  gravity: -19.62
 --- !u!114 &3592699426690536673
 MonoBehaviour:
   m_ObjectHideFlags: 0
