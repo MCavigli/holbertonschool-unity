@@ -9,7 +9,8 @@ using UnityEngine.Audio;
 public class OptionsMenu : MonoBehaviour
 {
 	public Toggle inverted;
-	public AudioMixer MasterMixer;
+	public AudioMixer BGM;
+	public AudioMixer SFX;
 
 	void Start()
 	{
@@ -36,6 +37,10 @@ public class OptionsMenu : MonoBehaviour
 	}
 	public void SetMusicLvl(float BGMSlider)
 	{
-		MasterMixer.SetFloat("BGM", BGMSlider);
+		BGM.SetFloat("BGM", BGMSlider);
+	}
+	public void SetSFXLvl(float SFXSlider)
+	{
+		SFX.SetFloat("SFX", SFXSlider);
 	}
 }
