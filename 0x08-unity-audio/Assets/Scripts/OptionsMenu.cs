@@ -4,14 +4,16 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class OptionsMenu : MonoBehaviour
 {
 	public Toggle inverted;
+	public AudioMixer MasterMixer;
 
 	void Start()
 	{
-		Debug.Log("Here it is: " + this);
+		// Debug.Log("Here it is: " + this);
 		if (PlayerPrefs.GetString("Inverted") != "")
 			inverted.isOn = bool.Parse(PlayerPrefs.GetString("Inverted"));
 
@@ -31,5 +33,9 @@ public class OptionsMenu : MonoBehaviour
 		// }
 		// else
 		// 	PlayerPrefs.SetInt("Inverted", 0);
+	}
+	public void SetMusicLvl(float BGMSlider)
+	{
+		MasterMixer.SetFloat("BGM", BGMSlider);
 	}
 }

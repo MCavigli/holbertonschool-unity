@@ -10,13 +10,15 @@ AudioMixerController:
   m_OutputGroup: {fileID: 0}
   m_MasterGroup: {fileID: 24300002}
   m_Snapshots:
-  - {fileID: 24500006}
   - {fileID: 245478053336985394}
+  - {fileID: 24500006}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: c700cff179bdc4dba81916b56316c697
+    name: BGMSlider
   m_AudioMixerGroupViews:
   - guids:
     - 63a4f73756bb24970a7254745396f15d

@@ -669,6 +669,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inverted: {fileID: 1935837633}
+  MasterMixer: {fileID: 24100000, guid: 78f0e1818384c4c78bcde8e9f09c31d7, type: 2}
 --- !u!1 &662918185
 GameObject:
   m_ObjectHideFlags: 0
