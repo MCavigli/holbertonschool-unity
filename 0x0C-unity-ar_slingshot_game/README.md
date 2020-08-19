@@ -1,6 +1,6 @@
 # 0x0C. Unity - AR Slingshot Game
 
-## ~DISCLAIMER~
+## --- DISCLAIMER ---
 
 This application is currently a work in progress.
 
